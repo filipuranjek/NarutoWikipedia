@@ -1,0 +1,12 @@
+<div class="tailedb-list-home">
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+  <div *ngIf="tailedBeasts && tailedBeasts.length > 0" class="tailedb-list-container">
+    <ul class="tailedb-list">
+      <li *ngFor="let beast of tailedBeasts" class="tailedb-item">
+        <img [src]="beast.images[0]" alt="{{ beast.name }}" class="tailedb-image">
+        <a [routerLink]="['/character/search/', beast.name]" class="tailedb-link">{{ beast.name }}</a>
+      </li>
+    </ul>
+  </div>
+</div>

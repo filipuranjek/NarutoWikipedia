@@ -1,0 +1,21 @@
+<div class="kekkei-genkai-list-home">
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+  <div *ngIf="kekkeiGenkais && kekkeiGenkais.length > 0" class="kekkei-genkai-list-container">
+    <ul class="kekkei-genkai-list">
+      <li *ngFor="let kekkeiGenkai of kekkeiGenkais" class="kekkei-genkai-item">
+        <img *ngIf="kekkeiGenkai.characters && kekkeiGenkai.characters.length > 0 && kekkeiGenkai.characters[0].images && kekkeiGenkai.characters[0].images.length > 0"
+             [src]="kekkeiGenkai.characters[0].images[0]"
+             alt="{{ kekkeiGenkai.name }}"
+             class="kekkei-genkai-image">
+        <a [routerLink]="['/kekkei-genkai/search/', kekkeiGenkai.name]" class="kekkei-genkai-link">{{ kekkeiGenkai.name }}</a>
+      </li>
+    </ul>
+
+    <div class="pagination">
+      <button (click)="goToPreviousPage()" [disabled]="page === 1" class="pagination-button">Previous</button>
+      <span class="pagination-info">Page {{ page }} of {{ totalPages }}</span>
+      <button (click)="goToNextPage()" [disabled]="page === totalPages" class="pagination-button">Next</button>
+    </div>
+  </div>
+</div>

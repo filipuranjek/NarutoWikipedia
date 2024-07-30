@@ -1,0 +1,106 @@
+@import '../../styles/variables';
+
+.kekkei-genkai-list-home {
+    font-family: 'Naruto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    background-image: url('../../assets/images/Spiral_Background.webp');
+    background-size: 80px 80px;
+    background-position: center top;
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    .error-message {
+        color: red;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .kekkei-genkai-list-container {
+        width: 100%;
+        max-width: 1200px;
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        .kekkei-genkai-list {
+            list-style-type: none;
+            padding: 0;
+            width: 100%;
+            margin-bottom: 2rem;
+
+            .kekkei-genkai-item {
+                display: flex;
+                align-items: center;
+                padding: 0.5rem 1rem;
+                margin: 0.5rem 0;
+                background-color: rgba(255, 255, 255, 0.8);
+                border-bottom: 1px solid $primary-color2;
+                border-radius: 8px;
+                text-align: center;
+                transition: background-color 0.3s ease;
+
+                &:hover {
+                    background-color: rgba(0, 0, 0, 0.05);
+                }
+
+                .kekkei-genkai-image {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    margin-right: 1rem;
+                }
+
+                .kekkei-genkai-link {
+                    text-decoration: none;
+                    color: #333;
+                    font-size: 1.2rem;
+                    transition: color 0.3s ease;
+
+                    &:hover {
+                        color: $primary-color1;
+                    }
+                }
+            }
+        }
+
+        .pagination {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+
+            .pagination-button {
+                padding: 0.5rem 1rem;
+                background-color: $primary-color1;
+                border: none;
+                border-radius: 4px;
+                color: #fff;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+
+                &:disabled {
+                    background-color: #ccc;
+                    cursor: not-allowed;
+                }
+
+                &:not(:disabled):hover {
+                    background-color: darken($primary-color1, 10%);
+                }
+            }
+
+            .pagination-info {
+                font-size: 1.2rem;
+                color: #333;
+            }
+        }
+    }
+}

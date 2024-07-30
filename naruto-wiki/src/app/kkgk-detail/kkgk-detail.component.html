@@ -1,0 +1,22 @@
+<div class="kekkei-genkai-detail-container" *ngIf="!isLoading && !kekkeiGenkaiNotFound">
+  <div class="kekkei-genkai-detail-header">
+    <h1>{{ kekkeiGenkai?.name }}</h1>
+  </div>
+
+  <div class="kekkei-genkai-detail-info" *ngIf="kekkeiGenkai?.characters?.length">
+    <div class="section">
+      <h2>Characters with this Kekkei Genkai:</h2>
+      <div class="characters-grid">
+        <div class="character-card" *ngFor="let character of kekkeiGenkai?.characters">
+          <a [routerLink]="['/character/search/', character.name]">
+            <img [src]="character.images && character.images.length > 0 ? character.images[0] : '../../assets/images/placeholder.webp'" alt="{{ character.name }}">
+            <div class="character-name">{{ character.name }}</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isLoading" class="loading">Loading...</div>
+<div *ngIf="kekkeiGenkaiNotFound" class="error-message">{{ errorMessage }}</div>

@@ -1,0 +1,42 @@
+<div class="character-detail-container" *ngIf="!isLoading && !characterNotFound">
+  <div class="character-detail-header">
+    <h1>{{ character?.name }}</h1>
+    <img [src]="character?.images?.[0] ? character?.images?.[0] : '../../assets/images/placeholder.webp'" alt="{{ character?.name }}" class="character-detail-image">
+  </div>
+
+  <div class="character-detail-info">
+    <div class="section">
+      <h2>Debut</h2>
+      <p *ngFor="let debut of character?.debut | keyvalue">{{ debut.key }}: {{ debut.value }}</p>
+    </div>
+
+    <div class="section">
+      <h2>Personal Information</h2>
+      <p *ngFor="let info of character?.personal | keyvalue">{{ info.key }}: {{ info.value }}</p>
+    </div>
+
+    <div class="section">
+      <h2>Jutsu</h2>
+      <ul>
+        <li *ngFor="let jutsu of character?.jutsu">{{ jutsu }}</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Nature Type</h2>
+      <ul>
+        <li *ngFor="let nature of character?.natureType">{{ nature }}</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Unique Traits</h2>
+      <ul>
+        <li *ngFor="let trait of character?.uniqueTraits">{{ trait }}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isLoading" class="loading">Loading...</div>
+<div *ngIf="characterNotFound" class="error-message">{{ errorMessage }}</div>
